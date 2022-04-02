@@ -1,4 +1,4 @@
-package algorithm;
+package br.com.paradigma.algorithm;
 
 import java.util.*;
 import java.util.regex.Matcher;

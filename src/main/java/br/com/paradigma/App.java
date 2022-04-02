@@ -1,4 +1,6 @@
-import algorithm.ShuntingYard;
+package br.com.paradigma;
+
+import br.com.paradigma.algorithm.ShuntingYard;
 
 import java.util.List;
 import java.util.Scanner;

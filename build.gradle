@@ -1,8 +1,13 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
-group 'org.example'
+application {
+    mainClass = 'br.com.paradigma.App'
+}
+
+group 'br.com.paradigma'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -17,4 +22,8 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+run {
+    standardInput = System.in
 }
