@@ -3,7 +3,7 @@ import algorithm.ShuntingYard;
 import java.util.List;
 import java.util.Scanner;
 
-public class MainTest {
+public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         ShuntingYard algorithm = new ShuntingYard();
