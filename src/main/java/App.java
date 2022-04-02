@@ -9,7 +9,7 @@ public class App {
         ShuntingYard algorithm = new ShuntingYard();
         while(sc.hasNext()){
             String expression = sc.nextLine();
-            List<String> tokens = algorithm.lexier(expression);
+            List<String> tokens = algorithm.generateTokens(expression);
             List<String> parser = algorithm.parser(tokens);
             double value = algorithm.evalStep(parser);
 

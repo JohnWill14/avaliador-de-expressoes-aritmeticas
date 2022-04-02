@@ -14,7 +14,7 @@ class ParserShuntingYardTest {
     void testParserExample(){
         ShuntingYard algorithm = new ShuntingYard();
 
-        List<String> tokens = algorithm.lexier("5 + 2 / (3 - 8) * 5 - 2");
+        List<String> tokens = algorithm.generateTokens("5 + 2 / (3 - 8) * 5 - 2");
 
         List<String> parser = algorithm.parser(tokens);
 
@@ -29,7 +29,7 @@ class ParserShuntingYardTest {
     void testParser1(){
         ShuntingYard algorithm = new ShuntingYard();
 
-        List<String> tokens = algorithm.lexier("31 * 4 + 10");
+        List<String> tokens = algorithm.generateTokens("31 * 4 + 10");
 
         List<String> parser = algorithm.parser(tokens);
 
@@ -42,7 +42,7 @@ class ParserShuntingYardTest {
     void testParser2(){
         ShuntingYard algorithm = new ShuntingYard();
 
-        List<String> tokens = algorithm.lexier("31 * (4 + 10)");
+        List<String> tokens = algorithm.generateTokens("31 * (4 + 10)");
 
         List<String> parser = algorithm.parser(tokens);
 
@@ -55,7 +55,7 @@ class ParserShuntingYardTest {
     void testParser3(){
         ShuntingYard algorithm = new ShuntingYard();
 
-        List<String> tokens = algorithm.lexier("1 + 3");
+        List<String> tokens = algorithm.generateTokens("1 + 3");
 
         List<String> parser = algorithm.parser(tokens);
 
@@ -68,7 +68,7 @@ class ParserShuntingYardTest {
     void testParser4(){
         ShuntingYard algorithm = new ShuntingYard();
 
-        List<String> tokens = algorithm.lexier("1 + 2 * 3");
+        List<String> tokens = algorithm.generateTokens("1 + 2 * 3");
 
         List<String> parser = algorithm.parser(tokens);
 
@@ -81,7 +81,7 @@ class ParserShuntingYardTest {
     void testParser5(){
         ShuntingYard algorithm = new ShuntingYard();
 
-        List<String> tokens = algorithm.lexier("4 / 2 + 7");
+        List<String> tokens = algorithm.generateTokens("4 / 2 + 7");
 
         List<String> parser = algorithm.parser(tokens);
 
@@ -94,7 +94,7 @@ class ParserShuntingYardTest {
     void testParser6(){
         ShuntingYard algorithm = new ShuntingYard();
 
-        List<String> tokens = algorithm.lexier("1 + 2 + 3 * 4");
+        List<String> tokens = algorithm.generateTokens("1 + 2 + 3 * 4");
 
         List<String> parser = algorithm.parser(tokens);
 
@@ -108,7 +108,7 @@ class ParserShuntingYardTest {
     void testParser7(){
         ShuntingYard algorithm = new ShuntingYard();
 
-        List<String> tokens = algorithm.lexier("(1 + 2 + 3) * 4");
+        List<String> tokens = algorithm.generateTokens("(1 + 2 + 3) * 4");
 
         List<String> parser = algorithm.parser(tokens);
 
@@ -122,7 +122,7 @@ class ParserShuntingYardTest {
     void testParser8(){
         ShuntingYard algorithm = new ShuntingYard();
 
-        List<String> tokens = algorithm.lexier("(10 / 3 + 23) * (1 - 4)");
+        List<String> tokens = algorithm.generateTokens("(10 / 3 + 23) * (1 - 4)");
 
         List<String> parser = algorithm.parser(tokens);
 
@@ -135,7 +135,7 @@ class ParserShuntingYardTest {
     void testParser9(){
         ShuntingYard algorithm = new ShuntingYard();
 
-        List<String> tokens = algorithm.lexier("((1 + 3) * 8 + 1) / 3");
+        List<String> tokens = algorithm.generateTokens("((1 + 3) * 8 + 1) / 3");
 
         List<String> parser = algorithm.parser(tokens);
 
@@ -149,7 +149,7 @@ class ParserShuntingYardTest {
     void testParser10(){
         ShuntingYard algorithm = new ShuntingYard();
 
-        List<String> tokens = algorithm.lexier("10 * 20 + 3 * 7 + 2 * 3 + 10 / 3 * 4");
+        List<String> tokens = algorithm.generateTokens("10 * 20 + 3 * 7 + 2 * 3 + 10 / 3 * 4");
 
         List<String> parser = algorithm.parser(tokens);
 
@@ -162,7 +162,7 @@ class ParserShuntingYardTest {
     void testParser11(){
         ShuntingYard algorithm = new ShuntingYard();
 
-        List<String> tokens = algorithm.lexier("1 + -2 * 3");
+        List<String> tokens = algorithm.generateTokens("1 + -2 * 3");
 
         List<String> parser = algorithm.parser(tokens);
 

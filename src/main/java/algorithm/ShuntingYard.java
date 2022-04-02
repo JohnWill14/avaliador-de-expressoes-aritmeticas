@@ -5,7 +5,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ShuntingYard{
-    private static Map<String, Integer> operatorPrecedure;
+    private static final Map<String, Integer> operatorPrecedure;
+    private String regexTokenSeparator = "\\s?(-?\\d+|[+*\\-\\/()])\\s?";
 
     static{
         operatorPrecedure = new HashMap<>();
@@ -16,14 +17,12 @@ public class ShuntingYard{
         operatorPrecedure.put("*", 2);
         operatorPrecedure.put("/", 2);
 
-        operatorPrecedure.put("^", 3);
-
         operatorPrecedure.put("(", -1);
         operatorPrecedure.put(")", -1);
     }
 
-    public List<String> lexier(String express){
-        Pattern pattern = Pattern.compile("\\s?(-?\\d+|[+*\\-\\/()])\\s?");
+    public List<String> generateTokens(String express){
+        Pattern pattern = Pattern.compile(regexTokenSeparator);
         Matcher matcher = pattern.matcher(express);
         List<String> tokens = new LinkedList<>();
 

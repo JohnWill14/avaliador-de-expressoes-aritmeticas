@@ -13,7 +13,7 @@ public class EvalStepTest {
     void testEvalStep(){
         ShuntingYard algorithm = new ShuntingYard();
 
-        List<String> tokens = algorithm.lexier("31 * (4 + 10)");
+        List<String> tokens = algorithm.generateTokens("31 * (4 + 10)");
         List<String> parser = algorithm.parser(tokens);
         double value = algorithm.evalStep(parser);
 
@@ -27,7 +27,7 @@ public class EvalStepTest {
     void testEvalStep1(){
         ShuntingYard algorithm = new ShuntingYard();
 
-        List<String> tokens = algorithm.lexier("5 + 2 / (3 - 8) * 5 - 2");
+        List<String> tokens = algorithm.generateTokens("5 + 2 / (3 - 8) * 5 - 2");
         List<String> parser = algorithm.parser(tokens);
         double value = algorithm.evalStep(parser);
 
@@ -41,7 +41,7 @@ public class EvalStepTest {
     void testEvalStep2(){
         ShuntingYard algorithm = new ShuntingYard();
 
-        List<String> tokens = algorithm.lexier("1 + 2 * 3");
+        List<String> tokens = algorithm.generateTokens("1 + 2 * 3");
         List<String> parser = algorithm.parser(tokens);
         double value = algorithm.evalStep(parser);
 
@@ -55,7 +55,7 @@ public class EvalStepTest {
     void testEvalStep3(){
         ShuntingYard algorithm = new ShuntingYard();
 
-        List<String> tokens = algorithm.lexier("4 / 2 + 7");
+        List<String> tokens = algorithm.generateTokens("4 / 2 + 7");
         List<String> parser = algorithm.parser(tokens);
         double value = algorithm.evalStep(parser);
 
@@ -69,7 +69,7 @@ public class EvalStepTest {
     void testEvalStep4(){
         ShuntingYard algorithm = new ShuntingYard();
 
-        List<String> tokens = algorithm.lexier("1 + 2 + 3 * 4");
+        List<String> tokens = algorithm.generateTokens("1 + 2 + 3 * 4");
         List<String> parser = algorithm.parser(tokens);
         double value = algorithm.evalStep(parser);
 
@@ -83,7 +83,7 @@ public class EvalStepTest {
     void testEvalStep5(){
         ShuntingYard algorithm = new ShuntingYard();
 
-        List<String> tokens = algorithm.lexier("(1 + 2 + 3) * 4");
+        List<String> tokens = algorithm.generateTokens("(1 + 2 + 3) * 4");
         List<String> parser = algorithm.parser(tokens);
         double value = algorithm.evalStep(parser);
 
