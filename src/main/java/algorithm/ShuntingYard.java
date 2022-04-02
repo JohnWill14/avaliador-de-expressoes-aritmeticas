@@ -1,9 +1,10 @@
+package algorithm;
+
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
-public class ShuntingYard<T> {
+public class ShuntingYard{
     private static Map<String, Integer> operatorPrecedure;
 
     static{
@@ -19,8 +20,6 @@ public class ShuntingYard<T> {
 
         operatorPrecedure.put("(", -1);
         operatorPrecedure.put(")", -1);
-    }
-    public ShuntingYard(){
     }
 
     public List<String> lexier(String express){
@@ -107,7 +106,6 @@ public class ShuntingYard<T> {
                 link.addAll(pilha.subList(0, pilha.size()));
                 link.addAll(tokens.subList(cont, tokens.size()));
 
-//                System.out.println(link);
                 System.out.println(toString(link));
             }
         }
