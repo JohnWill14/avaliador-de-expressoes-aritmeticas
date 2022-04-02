@@ -1,6 +1,6 @@
 package algorithm;
 
-import br.com.paradigma.algorithm.ShuntingYard;
+import br.com.paradigma.algorithm.ArithmeticExpressionEvaluator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,7 @@ public class GenerateTokensShutingYardTest {
     @Test
     @DisplayName("Test function tokens")
     void testtokens(){
-        ShuntingYard algorithm = new ShuntingYard();
+        ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
         List<String> tokens1 = algorithm.generateTokens("31 * (4 + 10)");
         List<String> tokens2 = algorithm.generateTokens("1 + 3");

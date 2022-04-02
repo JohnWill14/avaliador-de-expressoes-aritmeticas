@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ShuntingYard{
+public class ArithmeticExpressionEvaluator {
     private static final Map<String, Integer> orderPrecedence;
     private String regexTokenSeparator = "\\s?(-?\\d+|[+*\\-\\/()])\\s?";
 

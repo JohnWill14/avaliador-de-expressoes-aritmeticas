@@ -1,6 +1,6 @@
 package algorithm;
 
-import br.com.paradigma.algorithm.ShuntingYard;
+import br.com.paradigma.algorithm.ArithmeticExpressionEvaluator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,7 @@ class convertInfixExpressionToPostfixTest {
     @Test
     @DisplayName("Test function parser example")
     void testConvertInfixExpressionToPostfixExample(){
-        ShuntingYard algorithm = new ShuntingYard();
+        ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
         List<String> tokens = algorithm.generateTokens("5 + 2 / (3 - 8) * 5 - 2");
 
@@ -28,7 +28,7 @@ class convertInfixExpressionToPostfixTest {
     @Test
     @DisplayName("Test function ConvertInfixExpressionToPostfix 1")
     void testConvertInfixExpressionToPostfix1(){
-        ShuntingYard algorithm = new ShuntingYard();
+        ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
         List<String> tokens = algorithm.generateTokens("31 * 4 + 10");
 
@@ -41,7 +41,7 @@ class convertInfixExpressionToPostfixTest {
     @Test
     @DisplayName("Test function parser 2")
     void testConvertInfixExpressionToPostfix2(){
-        ShuntingYard algorithm = new ShuntingYard();
+        ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
         List<String> tokens = algorithm.generateTokens("31 * (4 + 10)");
 
@@ -54,7 +54,7 @@ class convertInfixExpressionToPostfixTest {
     @Test
     @DisplayName("Test function parser 3")
     void testConvertInfixExpressionToPostfix3(){
-        ShuntingYard algorithm = new ShuntingYard();
+        ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
         List<String> tokens = algorithm.generateTokens("1 + 3");
 
@@ -67,7 +67,7 @@ class convertInfixExpressionToPostfixTest {
     @Test
     @DisplayName("Test function parser 4")
     void testConvertInfixExpressionToPostfix4(){
-        ShuntingYard algorithm = new ShuntingYard();
+        ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
         List<String> tokens = algorithm.generateTokens("1 + 2 * 3");
 
@@ -80,7 +80,7 @@ class convertInfixExpressionToPostfixTest {
     @Test
     @DisplayName("Test function parser 5")
     void testConvertInfixExpressionToPostfix5(){
-        ShuntingYard algorithm = new ShuntingYard();
+        ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
         List<String> tokens = algorithm.generateTokens("4 / 2 + 7");
 
@@ -93,7 +93,7 @@ class convertInfixExpressionToPostfixTest {
     @Test
     @DisplayName("Test function parser 6")
     void testConvertInfixExpressionToPostfix6(){
-        ShuntingYard algorithm = new ShuntingYard();
+        ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
         List<String> tokens = algorithm.generateTokens("1 + 2 + 3 * 4");
 
@@ -107,7 +107,7 @@ class convertInfixExpressionToPostfixTest {
     @Test
     @DisplayName("Test function parser 7")
     void testConvertInfixExpressionToPostfix7(){
-        ShuntingYard algorithm = new ShuntingYard();
+        ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
         List<String> tokens = algorithm.generateTokens("(1 + 2 + 3) * 4");
 
@@ -121,7 +121,7 @@ class convertInfixExpressionToPostfixTest {
     @Test
     @DisplayName("Test function parser 8")
     void testConvertInfixExpressionToPostfix8(){
-        ShuntingYard algorithm = new ShuntingYard();
+        ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
         List<String> tokens = algorithm.generateTokens("(10 / 3 + 23) * (1 - 4)");
 
@@ -134,7 +134,7 @@ class convertInfixExpressionToPostfixTest {
     @Test
     @DisplayName("Test function parser 9")
     void testConvertInfixExpressionToPostfix9(){
-        ShuntingYard algorithm = new ShuntingYard();
+        ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
         List<String> tokens = algorithm.generateTokens("((1 + 3) * 8 + 1) / 3");
 
@@ -148,7 +148,7 @@ class convertInfixExpressionToPostfixTest {
     @Test
     @DisplayName("Test function parser 10")
     void testConvertInfixExpressionToPostfix10(){
-        ShuntingYard algorithm = new ShuntingYard();
+        ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
         List<String> tokens = algorithm.generateTokens("10 * 20 + 3 * 7 + 2 * 3 + 10 / 3 * 4");
 
@@ -161,7 +161,7 @@ class convertInfixExpressionToPostfixTest {
     @Test
     @DisplayName("Test function parser 11")
     void testConvertInfixExpressionToPostfix11(){
-        ShuntingYard algorithm = new ShuntingYard();
+        ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
         List<String> tokens = algorithm.generateTokens("1 + -2 * 3");
 
