@@ -75,7 +75,7 @@ public class ShuntingYard{
         return new ArrayList<>(filaSaida);
     }
 
-    public boolean hasLeftAssociation(String operation){
+    private boolean hasLeftAssociation(String operation){
         if(operation.equals("+")
                 ||operation.equals("*")
                 ||operation.equals("-")
@@ -117,7 +117,7 @@ public class ShuntingYard{
         return Integer.parseInt(pilha.pop());
     }
 
-    public int solveOperation(int a, int b, char operation){
+    private int solveOperation(int a, int b, char operation){
         int ans = 0;
 
         switch (operation){
@@ -147,7 +147,7 @@ public class ShuntingYard{
         return sb.toString();
     }
 
-    public Stack<String> convertListOfTokensForStack(List<String> tokens){
+    private Stack<String> convertListOfTokensForStack(List<String> tokens){
         Stack<String> stack = new Stack<>();
         stack.addAll(tokens);
         return stack;
@@ -193,11 +193,11 @@ public class ShuntingYard{
         return sb;
     }
 
-    public boolean isTokenAnOperation(String token){
+    private boolean isTokenAnOperation(String token){
         return token.matches("[+*\\-\\/]");
     }
 
-    public boolean isTokenAnNumber(String token){
+    private boolean isTokenAnNumber(String token){
         return token.matches("-?\\d+");
     }
 }
