@@ -1,5 +1,6 @@
+package algorithm;
+
 import org.assertj.core.api.Assertions;
-import org.assertj.core.internal.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +12,7 @@ class ParserShuntingYardTest {
     @Test
     @DisplayName("Test function parser example")
     void testParserExample(){
-        ShuntingYard<Object> algorithm = new ShuntingYard<>();
+        ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.lexier("5 + 2 / (3 - 8) * 5 - 2");
 
@@ -26,7 +27,7 @@ class ParserShuntingYardTest {
     @Test
     @DisplayName("Test function parser 1")
     void testParser1(){
-        ShuntingYard<Object> algorithm = new ShuntingYard<>();
+        ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.lexier("31 * 4 + 10");
 
@@ -39,7 +40,7 @@ class ParserShuntingYardTest {
     @Test
     @DisplayName("Test function parser 2")
     void testParser2(){
-        ShuntingYard<Object> algorithm = new ShuntingYard<>();
+        ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.lexier("31 * (4 + 10)");
 
@@ -52,7 +53,7 @@ class ParserShuntingYardTest {
     @Test
     @DisplayName("Test function parser 3")
     void testParser3(){
-        ShuntingYard<Object> algorithm = new ShuntingYard<>();
+        ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.lexier("1 + 3");
 
@@ -65,7 +66,7 @@ class ParserShuntingYardTest {
     @Test
     @DisplayName("Test function parser 4")
     void testParser4(){
-        ShuntingYard<Object> algorithm = new ShuntingYard<>();
+        ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.lexier("1 + 2 * 3");
 
@@ -78,7 +79,7 @@ class ParserShuntingYardTest {
     @Test
     @DisplayName("Test function parser 5")
     void testParser5(){
-        ShuntingYard<Object> algorithm = new ShuntingYard<>();
+        ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.lexier("4 / 2 + 7");
 
@@ -91,7 +92,7 @@ class ParserShuntingYardTest {
     @Test
     @DisplayName("Test function parser 6")
     void testParser6(){
-        ShuntingYard<Object> algorithm = new ShuntingYard<>();
+        ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.lexier("1 + 2 + 3 * 4");
 
@@ -105,7 +106,7 @@ class ParserShuntingYardTest {
     @Test
     @DisplayName("Test function parser 7")
     void testParser7(){
-        ShuntingYard<Object> algorithm = new ShuntingYard<>();
+        ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.lexier("(1 + 2 + 3) * 4");
 
@@ -119,7 +120,7 @@ class ParserShuntingYardTest {
     @Test
     @DisplayName("Test function parser 8")
     void testParser8(){
-        ShuntingYard<Object> algorithm = new ShuntingYard<>();
+        ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.lexier("(10 / 3 + 23) * (1 - 4)");
 
@@ -132,7 +133,7 @@ class ParserShuntingYardTest {
     @Test
     @DisplayName("Test function parser 9")
     void testParser9(){
-        ShuntingYard<Object> algorithm = new ShuntingYard<>();
+        ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.lexier("((1 + 3) * 8 + 1) / 3");
 
@@ -146,7 +147,7 @@ class ParserShuntingYardTest {
     @Test
     @DisplayName("Test function parser 10")
     void testParser10(){
-        ShuntingYard<Object> algorithm = new ShuntingYard<>();
+        ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.lexier("10 * 20 + 3 * 7 + 2 * 3 + 10 / 3 * 4");
 
@@ -159,7 +160,7 @@ class ParserShuntingYardTest {
     @Test
     @DisplayName("Test function parser 11")
     void testParser11(){
-        ShuntingYard<Object> algorithm = new ShuntingYard<>();
+        ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.lexier("1 + -2 * 3");
 

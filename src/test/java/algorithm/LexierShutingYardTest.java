@@ -1,3 +1,4 @@
+package algorithm;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -11,7 +12,7 @@ public class LexierShutingYardTest {
     @Test
     @DisplayName("Test function Lexier")
     void testLexier(){
-        ShuntingYard<Object> algorithm = new ShuntingYard<>();
+        ShuntingYard algorithm = new ShuntingYard();
 
         List<String> lexier1 = algorithm.lexier("31 * (4 + 10)");
         List<String> lexier2 = algorithm.lexier("1 + 3");
