@@ -14,7 +14,7 @@ public class EvalStepTest {
         ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.generateTokens("31 * (4 + 10)");
-        List<String> parser = algorithm.parser(tokens);
+        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
         double value = algorithm.evalStep(parser);
 
         Assertions.assertThat(value)
@@ -28,7 +28,7 @@ public class EvalStepTest {
         ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.generateTokens("5 + 2 / (3 - 8) * 5 - 2");
-        List<String> parser = algorithm.parser(tokens);
+        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
         double value = algorithm.evalStep(parser);
 
         Assertions.assertThat(value)
@@ -42,7 +42,7 @@ public class EvalStepTest {
         ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.generateTokens("1 + 2 * 3");
-        List<String> parser = algorithm.parser(tokens);
+        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
         double value = algorithm.evalStep(parser);
 
         Assertions.assertThat(value)
@@ -56,7 +56,7 @@ public class EvalStepTest {
         ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.generateTokens("4 / 2 + 7");
-        List<String> parser = algorithm.parser(tokens);
+        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
         double value = algorithm.evalStep(parser);
 
         Assertions.assertThat(value)
@@ -70,7 +70,7 @@ public class EvalStepTest {
         ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.generateTokens("1 + 2 + 3 * 4");
-        List<String> parser = algorithm.parser(tokens);
+        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
         double value = algorithm.evalStep(parser);
 
         Assertions.assertThat(value)
@@ -84,7 +84,7 @@ public class EvalStepTest {
         ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.generateTokens("(1 + 2 + 3) * 4");
-        List<String> parser = algorithm.parser(tokens);
+        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
         double value = algorithm.evalStep(parser);
 
         Assertions.assertThat(value)

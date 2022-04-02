@@ -10,7 +10,7 @@ public class App {
         while(sc.hasNext()){
             String expression = sc.nextLine();
             List<String> tokens = algorithm.generateTokens(expression);
-            List<String> parser = algorithm.parser(tokens);
+            List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
             double value = algorithm.evalStep(parser);
 
             System.out.println(expression +" => "+ String.format("%.2f", value));

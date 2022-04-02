@@ -33,7 +33,8 @@ public class ShuntingYard{
         return tokens;
     }
 
-    public  List<String> parser(List<String> tokens){
+    public  List<String> convertInfixExpressionToPostfix(List<String> tokens){
+        // url site: https://brilliant.org/wiki/shunting-yard-algorithm/
         Stack<String> pilhaOperacao = new Stack<>();
         Queue<String> filaSaida = new LinkedList<>();
 
@@ -171,7 +172,7 @@ public class ShuntingYard{
 
             if(isTokenAnOperation(tokenDir)&&
                     operatorPrecedure.get(tokenDir)<operatorPrecedure.get(token)){
-                sb.append("(");
+                sb.append(" (");
                 sb.append(filhoDireita);
                 sb.append(")");
             }else {

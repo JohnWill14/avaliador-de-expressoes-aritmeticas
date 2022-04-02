@@ -8,15 +8,15 @@ import java.util.List;
 
 
 @DisplayName("Test method parser from Shunting-yard algorithm")
-class ParserShuntingYardTest {
+class convertInfixExpressionToPostfixTest {
     @Test
     @DisplayName("Test function parser example")
-    void testParserExample(){
+    void testConvertInfixExpressionToPostfixExample(){
         ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.generateTokens("5 + 2 / (3 - 8) * 5 - 2");
 
-        List<String> parser = algorithm.parser(tokens);
+        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
 
 
 
@@ -25,13 +25,13 @@ class ParserShuntingYardTest {
     }
 
     @Test
-    @DisplayName("Test function parser 1")
-    void testParser1(){
+    @DisplayName("Test function ConvertInfixExpressionToPostfix 1")
+    void testConvertInfixExpressionToPostfix1(){
         ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.generateTokens("31 * 4 + 10");
 
-        List<String> parser = algorithm.parser(tokens);
+        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("31", "4", "*", "10", "+"));
@@ -39,12 +39,12 @@ class ParserShuntingYardTest {
 
     @Test
     @DisplayName("Test function parser 2")
-    void testParser2(){
+    void testConvertInfixExpressionToPostfix2(){
         ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.generateTokens("31 * (4 + 10)");
 
-        List<String> parser = algorithm.parser(tokens);
+        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("31", "4", "10", "+", "*"));
@@ -52,12 +52,12 @@ class ParserShuntingYardTest {
 
     @Test
     @DisplayName("Test function parser 3")
-    void testParser3(){
+    void testConvertInfixExpressionToPostfix3(){
         ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.generateTokens("1 + 3");
 
-        List<String> parser = algorithm.parser(tokens);
+        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("1", "3", "+"));
@@ -65,12 +65,12 @@ class ParserShuntingYardTest {
 
     @Test
     @DisplayName("Test function parser 4")
-    void testParser4(){
+    void testConvertInfixExpressionToPostfix4(){
         ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.generateTokens("1 + 2 * 3");
 
-        List<String> parser = algorithm.parser(tokens);
+        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("1", "2", "3", "*", "+"));
@@ -78,12 +78,12 @@ class ParserShuntingYardTest {
 
     @Test
     @DisplayName("Test function parser 5")
-    void testParser5(){
+    void testConvertInfixExpressionToPostfix5(){
         ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.generateTokens("4 / 2 + 7");
 
-        List<String> parser = algorithm.parser(tokens);
+        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("4", "2", "/", "7", "+"));
@@ -91,12 +91,12 @@ class ParserShuntingYardTest {
 
     @Test
     @DisplayName("Test function parser 6")
-    void testParser6(){
+    void testConvertInfixExpressionToPostfix6(){
         ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.generateTokens("1 + 2 + 3 * 4");
 
-        List<String> parser = algorithm.parser(tokens);
+        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("1", "2", "+", "3", "4", "*", "+"));
@@ -105,12 +105,12 @@ class ParserShuntingYardTest {
 
     @Test
     @DisplayName("Test function parser 7")
-    void testParser7(){
+    void testConvertInfixExpressionToPostfix7(){
         ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.generateTokens("(1 + 2 + 3) * 4");
 
-        List<String> parser = algorithm.parser(tokens);
+        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("1", "2", "+", "3", "+", "4", "*"));
@@ -119,12 +119,12 @@ class ParserShuntingYardTest {
 
     @Test
     @DisplayName("Test function parser 8")
-    void testParser8(){
+    void testConvertInfixExpressionToPostfix8(){
         ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.generateTokens("(10 / 3 + 23) * (1 - 4)");
 
-        List<String> parser = algorithm.parser(tokens);
+        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("10", "3", "/", "23", "+", "1", "4", "-", "*"));
@@ -132,12 +132,12 @@ class ParserShuntingYardTest {
 
     @Test
     @DisplayName("Test function parser 9")
-    void testParser9(){
+    void testConvertInfixExpressionToPostfix9(){
         ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.generateTokens("((1 + 3) * 8 + 1) / 3");
 
-        List<String> parser = algorithm.parser(tokens);
+        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("1", "3", "+", "8", "*", "1", "+", "3", "/"));
@@ -146,12 +146,12 @@ class ParserShuntingYardTest {
 
     @Test
     @DisplayName("Test function parser 10")
-    void testParser10(){
+    void testConvertInfixExpressionToPostfix10(){
         ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.generateTokens("10 * 20 + 3 * 7 + 2 * 3 + 10 / 3 * 4");
 
-        List<String> parser = algorithm.parser(tokens);
+        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("10", "20", "*", "3", "7", "*", "+", "2", "3", "*", "+", "10", "3", "/", "4", "*", "+"));
@@ -159,12 +159,12 @@ class ParserShuntingYardTest {
 
     @Test
     @DisplayName("Test function parser 11")
-    void testParser11(){
+    void testConvertInfixExpressionToPostfix11(){
         ShuntingYard algorithm = new ShuntingYard();
 
         List<String> tokens = algorithm.generateTokens("1 + -2 * 3");
 
-        List<String> parser = algorithm.parser(tokens);
+        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("1", "-2", "3", "*", "+"));
