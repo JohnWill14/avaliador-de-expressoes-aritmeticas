@@ -164,52 +164,33 @@ public class ShuntingYard{
             String tokenEsq = tokens.peek();
             StringBuilder filhoEsquerda = visitToken(tokens);
 
-            if(isAddParents(tokenEsq, token)){
-                sb = addInStringBuilderAnParenthesesAndExpression(sb, filhoEsquerda);
+            if(isTokenAnOperation(tokenEsq)
+                    &&orderPrecedence.get(tokenEsq)<orderPrecedence.get(token)){
+                sb.append("(");
+                sb.append(filhoEsquerda);
+                sb.append(")");
             }else{
-                sb = addInStringBuilderAnExpression(sb, filhoEsquerda);
+                sb.append(filhoEsquerda);
             }
 
+            sb.append(" ");
             sb.append(token);
+            sb.append(" ");
 
-            if(isAddParents(tokenDir, token)){
-                sb = addInStringBuilderAnParenthesesAndExpression(sb, filhoDireita);
+            if(isTokenAnOperation(tokenDir)&&
+                    orderPrecedence.get(tokenDir)<orderPrecedence.get(token)){
+                sb.append("(");
+                sb.append(filhoDireita);
+                sb.append(")");
             }else {
-                sb = addInStringBuilderAnExpression(sb, filhoDireita);
+                sb.append(filhoDireita);
             }
 
         }else{
-            sb = addInStringBuilderAnExpression(sb, token);
+            sb.append(token);
         }
 
         return sb;
-    }
-    
-    public StringBuilder addInStringBuilderAnParenthesesAndExpression(StringBuilder sb, StringBuilder filho){
-            sb.append("(");
-            sb.append(filho);
-            sb.append(")");
-
-        return sb;
-    }
-
-    public StringBuilder addInStringBuilderAnExpression(StringBuilder sb, StringBuilder filho){
-        sb.append(filho);
-        sb.append(" ");
-
-        return sb;
-    }
-
-    public StringBuilder addInStringBuilderAnExpression(StringBuilder sb, String filho){
-        sb.append(filho);
-        sb.append(" ");
-
-        return sb;
-    }
-
-    public boolean isAddParents(String tokenFilho, String token){
-        return isTokenAnOperation(tokenFilho)&&
-                orderPrecedence.get(tokenFilho)< orderPrecedence.get(token);
     }
 
     public boolean isTokenAnOperation(String token){
