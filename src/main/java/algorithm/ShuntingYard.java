@@ -89,7 +89,6 @@ public class ShuntingYard{
     public  double solvePostfixExpression(List<String> tokens){
         Stack<String> pilha = new Stack<>();
         int cont = 0;
-
         double resp = 0;
 
         while(cont< tokens.size()){
@@ -99,14 +98,15 @@ public class ShuntingYard{
             if (isTokenAnNumber(token)){
                 pilha.push(token);
             }else{
-                int valor1 = Integer.parseInt(pilha.pop());
-                int valor2 = Integer.parseInt(pilha.pop());
-                char operation = token.charAt(0);
+                int valorDireita = Integer.parseInt(pilha.pop());
+                int valorEsquerda = Integer.parseInt(pilha.pop());
+                char operacao = token.charAt(0);
 
-                int result = resolveOperation(valor2, valor1, operation);
+                int result = solveOperation(valorEsquerda, valorDireita, operacao);
 
                 pilha.push(Integer.toString(result));
-                List link = new LinkedList<String>();
+
+                List<String> link = new LinkedList<>();
                 link.addAll(pilha.subList(0, pilha.size()));
                 link.addAll(tokens.subList(cont, tokens.size()));
 
@@ -117,79 +117,99 @@ public class ShuntingYard{
         return Double.parseDouble(pilha.pop());
     }
 
-    public int resolveOperation(int a, int b, char operation){
-        int result = 0;
+    public int solveOperation(int a, int b, char operation){
+        int ans = 0;
 
         switch (operation){
             case '+':
-                result = a+b;
+                ans = a+b;
                 break;
             case '-':
-                result = a-b;
+                ans = a-b;
                 break;
             case '*':
-                result = a*b;
+                ans = a*b;
                 break;
             case '/':
-                result = a/b;
+                ans = a/b;
                 break;
         }
 
-        return result;
+        return ans;
     }
 
     public  String toString(List<String> tokens){
-        StringBuffer sb ;
-        Stack<String> stack = new Stack<>();
+        StringBuilder sb ;
+        Stack<String> stack = convertListOfTokensForStack(tokens);
 
-        stack.addAll(tokens);
-
-        sb = visitToken( stack);
+        sb = visitToken(stack);
 
         return sb.toString();
     }
 
-    private StringBuffer visitToken(Stack<String> tokens){
-        if(tokens.empty())
-            return new StringBuffer();
+    public Stack<String> convertListOfTokensForStack(List<String> tokens){
+        Stack<String> stack = new Stack<>();
+        stack.addAll(tokens);
+        return stack;
+    }
 
-        StringBuffer sb = new StringBuffer();
+    private StringBuilder visitToken(Stack<String> tokens){
+        StringBuilder sb = new StringBuilder();
         String token = tokens.pop();
 
-        if(token.matches("[+*\\-\\/]")) {
+        if(isTokenAnOperation(token)) {
             String tokenDir = tokens.peek();
-            StringBuffer filhoDireita = visitToken(tokens);
+            StringBuilder filhoDireita = visitToken(tokens);
+            
             String tokenEsq = tokens.peek();
-            StringBuffer filhoEsquerda = visitToken(tokens);
+            StringBuilder filhoEsquerda = visitToken(tokens);
 
-            if(isTokenAnOperation(tokenEsq)
-                    && orderPrecedence.get(tokenEsq)< orderPrecedence.get(token)){
-                sb.append("(");
-                sb.append(filhoEsquerda);
-                sb.append(")");
+            if(isAddParents(tokenEsq, token)){
+                sb = addInStringBuilderAnParenthesesAndExpression(sb, filhoEsquerda);
             }else{
-                sb.append(filhoEsquerda);
-                sb.append(" ");
+                sb = addInStringBuilderAnExpression(sb, filhoEsquerda);
             }
 
             sb.append(token);
 
-            if(isTokenAnOperation(tokenDir)&&
-                    orderPrecedence.get(tokenDir)< orderPrecedence.get(token)){
-                sb.append(" (");
-                sb.append(filhoDireita);
-                sb.append(")");
+            if(isAddParents(tokenDir, token)){
+                sb = addInStringBuilderAnParenthesesAndExpression(sb, filhoDireita);
             }else {
-                sb.append(" ");
-                sb.append(filhoDireita);
+                sb = addInStringBuilderAnExpression(sb, filhoDireita);
             }
 
         }else{
-            sb.append(token);
-            sb.append(" ");
+            sb = addInStringBuilderAnExpression(sb, token);
         }
 
         return sb;
+    }
+    
+    public StringBuilder addInStringBuilderAnParenthesesAndExpression(StringBuilder sb, StringBuilder filho){
+            sb.append("(");
+            sb.append(filho);
+            sb.append(")");
+
+        return sb;
+    }
+
+    public StringBuilder addInStringBuilderAnExpression(StringBuilder sb, StringBuilder filho){
+        sb.append(filho);
+        sb.append(" ");
+
+        return sb;
+    }
+
+    public StringBuilder addInStringBuilderAnExpression(StringBuilder sb, String filho){
+        sb.append(filho);
+        sb.append(" ");
+
+        return sb;
+    }
+
+    public boolean isAddParents(String tokenFilho, String token){
+        return isTokenAnOperation(tokenFilho)&&
+                orderPrecedence.get(tokenFilho)< orderPrecedence.get(token);
     }
 
     public boolean isTokenAnOperation(String token){
