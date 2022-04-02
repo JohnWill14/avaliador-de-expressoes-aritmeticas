@@ -5,20 +5,20 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ShuntingYard{
-    private static final Map<String, Integer> operatorPrecedure;
+    private static final Map<String, Integer> orderPrecedence;
     private String regexTokenSeparator = "\\s?(-?\\d+|[+*\\-\\/()])\\s?";
 
     static{
-        operatorPrecedure = new HashMap<>();
+        orderPrecedence = new HashMap<>();
 
-        operatorPrecedure.put("-", 1);
-        operatorPrecedure.put("+", 1);
+        orderPrecedence.put("-", 1);
+        orderPrecedence.put("+", 1);
 
-        operatorPrecedure.put("*", 2);
-        operatorPrecedure.put("/", 2);
+        orderPrecedence.put("*", 2);
+        orderPrecedence.put("/", 2);
 
-        operatorPrecedure.put("(", -1);
-        operatorPrecedure.put(")", -1);
+        orderPrecedence.put("(", -1);
+        orderPrecedence.put(")", -1);
     }
 
     public List<String> generateTokens(String express){
@@ -34,7 +34,11 @@ public class ShuntingYard{
     }
 
     public  List<String> convertInfixExpressionToPostfix(List<String> tokens){
-        // url site: https://brilliant.org/wiki/shunting-yard-algorithm/
+        /* url site para consulta:
+         *   - https://brilliant.org/wiki/shunting-yard-algorithm/
+         *   - https://www.geeksforgeeks.org/java-program-to-implement-shunting-yard-algorithm/
+        */
+
         Stack<String> pilhaOperacao = new Stack<>();
         Queue<String> filaSaida = new LinkedList<>();
 
@@ -45,7 +49,7 @@ public class ShuntingYard{
                 filaSaida.add(token);
             }else if(isTokenAnOperation(token)){
                 while (!pilhaOperacao.isEmpty()
-                        &&operatorPrecedure.get(token) <= operatorPrecedure.get(pilhaOperacao.peek())
+                        && orderPrecedence.get(token) <= orderPrecedence.get(pilhaOperacao.peek())
                         &&hasLeftAssociation(token)) {
                     filaSaida.add(pilhaOperacao.pop());
                 }
@@ -82,7 +86,7 @@ public class ShuntingYard{
         return false;
     }
 
-    public  double evalStep(List<String> tokens){
+    public  double solvePostfixExpression(List<String> tokens){
         Stack<String> pilha = new Stack<>();
         int cont = 0;
 
@@ -159,7 +163,7 @@ public class ShuntingYard{
             StringBuffer filhoEsquerda = visitToken(tokens);
 
             if(isTokenAnOperation(tokenEsq)
-                    &&operatorPrecedure.get(tokenEsq)<operatorPrecedure.get(token)){
+                    && orderPrecedence.get(tokenEsq)< orderPrecedence.get(token)){
                 sb.append("(");
                 sb.append(filhoEsquerda);
                 sb.append(")");
@@ -171,7 +175,7 @@ public class ShuntingYard{
             sb.append(token);
 
             if(isTokenAnOperation(tokenDir)&&
-                    operatorPrecedure.get(tokenDir)<operatorPrecedure.get(token)){
+                    orderPrecedence.get(tokenDir)< orderPrecedence.get(token)){
                 sb.append(" (");
                 sb.append(filhoDireita);
                 sb.append(")");

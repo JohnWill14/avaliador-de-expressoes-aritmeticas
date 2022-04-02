@@ -11,7 +11,7 @@ public class App {
             String expression = sc.nextLine();
             List<String> tokens = algorithm.generateTokens(expression);
             List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
-            double value = algorithm.evalStep(parser);
+            double value = algorithm.solvePostfixExpression(parser);
 
             System.out.println(expression +" => "+ String.format("%.2f", value));
         }
