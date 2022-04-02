@@ -86,7 +86,7 @@ public class ShuntingYard{
         return false;
     }
 
-    public  double solvePostfixExpression(List<String> tokens){
+    public  int solvePostfixExpression(List<String> tokens){
         Stack<String> pilha = new Stack<>();
         int cont = 0;
         double resp = 0;
@@ -114,7 +114,7 @@ public class ShuntingYard{
             }
         }
 
-        return Double.parseDouble(pilha.pop());
+        return Integer.parseInt(pilha.pop());
     }
 
     public int solveOperation(int a, int b, char operation){
