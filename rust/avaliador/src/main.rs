@@ -1,7 +1,7 @@
 
 mod tokens;
 
-use tokens::generateTokens;
+use tokens::generate_tokens;
 fn main() {
-    generateTokens();
+    generate_tokens( "(1 + 2 + 3) * 43");
 }
