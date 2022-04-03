@@ -1,4 +1,3 @@
-
 use regex::Regex;
 
 pub fn generate_tokens(text: &str) ->  Vec<String> {
@@ -9,8 +8,6 @@ pub fn generate_tokens(text: &str) ->  Vec<String> {
         _tokens.push(String::from(&cap[1]));
     }
 
-    // println!("{:?}",&_tokens);
-
     _tokens
 }
 
@@ -19,7 +16,7 @@ mod tests {
     use super::generate_tokens;
 
     #[test]
-    fn fat_test(){
+    fn generate_tokens_test(){
         assert_eq!(vec!["(", "1", "+", "2", "+", "3", ")", "*", "43"].into_iter().map(|s| s.to_string()).collect::< Vec<String> >(),
          generate_tokens("(1 + 2 + 3) * 43"));
         
