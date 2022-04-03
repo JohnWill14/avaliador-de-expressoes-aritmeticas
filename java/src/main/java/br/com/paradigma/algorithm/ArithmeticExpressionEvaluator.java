@@ -1,91 +1,11 @@
 package br.com.paradigma.algorithm;
 
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
+import static br.com.paradigma.algorithm.OperatorsUtil.*;
+import static br.com.paradigma.algorithm.OperatorsUtil.getPrecedence;
 
 public class ArithmeticExpressionEvaluator {
-    private static final Map<String, Integer> orderPrecedence;
-    private String regexTokenSeparator = "\\s?(-?\\d+|[+*\\-\\/()])\\s?";
-
-    static{
-        orderPrecedence = new HashMap<>();
-
-        orderPrecedence.put("-", 1);
-        orderPrecedence.put("+", 1);
-
-        orderPrecedence.put("*", 2);
-        orderPrecedence.put("/", 2);
-
-        orderPrecedence.put("(", -1);
-        orderPrecedence.put(")", -1);
-    }
-
-    public List<String> generateTokens(String express){
-        Pattern pattern = Pattern.compile(regexTokenSeparator);
-        Matcher matcher = pattern.matcher(express);
-        List<String> tokens = new LinkedList<>();
-
-        while(matcher.find()){
-            tokens.add(matcher.group().trim());
-        }
-
-        return tokens;
-    }
-
-    public  List<String> convertInfixExpressionToPostfix(List<String> tokens){
-        /* url site para consulta:
-         *   - https://brilliant.org/wiki/shunting-yard-algorithm/
-         *   - https://www.geeksforgeeks.org/java-program-to-implement-shunting-yard-algorithm/
-        */
-
-        Stack<String> pilhaOperacao = new Stack<>();
-        Queue<String> filaSaida = new LinkedList<>();
-
-        while(!tokens.isEmpty()){
-            String token = tokens.remove(0);
-
-            if(isTokenAnNumber(token)){
-                filaSaida.add(token);
-            }else if(isTokenAnOperation(token)){
-                while (!pilhaOperacao.isEmpty()
-                        && orderPrecedence.get(token) <= orderPrecedence.get(pilhaOperacao.peek())
-                        &&hasLeftAssociation(token)) {
-                    filaSaida.add(pilhaOperacao.pop());
-                }
-                pilhaOperacao.push(token);
-
-            }else if(token.equals("(")){
-                pilhaOperacao.push(token);
-            }else if(token.equals(")")){
-                while (!pilhaOperacao.isEmpty()) {
-                    if(pilhaOperacao.peek().equals("(")){
-                        break;
-                    }
-                    filaSaida.add(pilhaOperacao.pop());
-                }
-                pilhaOperacao.pop();
-            }
-        }
-
-        while(!pilhaOperacao.isEmpty()){
-            filaSaida.add(pilhaOperacao.pop());
-        }
-
-        return new ArrayList<>(filaSaida);
-    }
-
-    private boolean hasLeftAssociation(String operation){
-        if(operation.equals("+")
-                ||operation.equals("*")
-                ||operation.equals("-")
-                ||operation.equals("/")
-                ||operation.equals("^")){
-            return true;
-        }
-        return false;
-    }
-
     public  int solvePostfixExpression(List<String> tokens){
         Stack<String> pilha = new Stack<>();
         int cont = 0;
@@ -110,7 +30,7 @@ public class ArithmeticExpressionEvaluator {
                 link.addAll(pilha.subList(0, pilha.size()));
                 link.addAll(tokens.subList(cont, tokens.size()));
 
-                System.out.println(toString(link));
+                System.out.println(convertExpressPostfixInInfix(link));
             }
         }
 
@@ -138,7 +58,7 @@ public class ArithmeticExpressionEvaluator {
         return ans;
     }
 
-    public  String toString(List<String> tokens){
+    public  String convertExpressPostfixInInfix(List<String> tokens){
         StringBuilder sb ;
         Stack<String> stack = convertListOfTokensForStack(tokens);
 
@@ -165,7 +85,7 @@ public class ArithmeticExpressionEvaluator {
             StringBuilder filhoEsquerda = visitToken(tokens);
 
             if(isTokenAnOperation(tokenEsq)
-                    &&orderPrecedence.get(tokenEsq)<orderPrecedence.get(token)){
+                    &&getPrecedence(tokenEsq)<getPrecedence(token)){
                 sb.append("(");
                 sb.append(filhoEsquerda);
                 sb.append(")");
@@ -178,26 +98,17 @@ public class ArithmeticExpressionEvaluator {
             sb.append(" ");
 
             if(isTokenAnOperation(tokenDir)&&
-                    orderPrecedence.get(tokenDir)<orderPrecedence.get(token)){
+                    getPrecedence(tokenDir)<getPrecedence(token)){
                 sb.append("(");
                 sb.append(filhoDireita);
                 sb.append(")");
             }else {
                 sb.append(filhoDireita);
             }
-
         }else{
             sb.append(token);
         }
 
         return sb;
-    }
-
-    private boolean isTokenAnOperation(String token){
-        return token.matches("[+*\\-\\/]");
-    }
-
-    private boolean isTokenAnNumber(String token){
-        return token.matches("-?\\d+");
     }
 }

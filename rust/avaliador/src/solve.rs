@@ -16,15 +16,15 @@ pub fn solve_postfix_expression(tokens: &mut Vec<String>) -> i64  {
         }else{
             let filho_direita: i64 = _pilha.pop().unwrap().parse::<i64>().unwrap();
             let filho_esquerda: i64 = _pilha.pop().unwrap().parse::<i64>().unwrap();
-            let mut operation = token.to_string();
+            let operation = token.to_string();
 
-            let mut result: i64 = solve_express(&filho_esquerda, &filho_direita, &operation);
+            let result: i64 = solve_express(&filho_esquerda, &filho_direita, &operation);
 
             _pilha.push(result.to_string());
 
             let mut aux = Vec::<String>::new();
-            let mut pilha_clone = _pilha.clone();
-            let mut tokens_clone = tokens.clone();
+            let  pilha_clone = _pilha.clone();
+            let  tokens_clone = tokens.clone();
 
             aux.append(&mut pilha_clone[0.._pilha.len()].to_vec().clone());
             aux.append(&mut tokens_clone[count..tokens.len()].to_vec().clone());
@@ -53,19 +53,19 @@ pub fn solve_express(num1: &i64,num2: &i64, op: &String) -> i64{
 }
 
 pub fn express_format(tokens: &mut Vec<String>) -> String{
-    visitToken(tokens)
+    visit_token(tokens)
 }
 
-pub fn visitToken(stack: &mut Vec<String>) -> String {
+pub fn visit_token(stack: &mut Vec<String>) -> String {
     let mut s = String::new();
-    let mut token = stack.pop().unwrap();
+    let token = stack.pop().unwrap();
 
     if !is_token_an_number(&token){
         let token_dir = peek(stack);
-        let filho_dir = visitToken(stack);
+        let filho_dir = visit_token(stack);
 
         let token_esq = peek(stack);
-        let filho_esq = visitToken(stack);
+        let filho_esq = visit_token(stack);
 
         if !is_token_an_number(&token_esq) && order_precedence(&token_esq) < order_precedence(&token) {
             s.push_str("(");
@@ -103,12 +103,6 @@ pub fn peek(pilha: &Vec<String>) -> String{
 
     let p = peek.unwrap();
     p
-}
-
-pub fn is_token_an_operation(token: &String) -> bool{
-    let re = Regex::new(r"[+*-\\]").unwrap();
-
-    re.is_match(token)
 }
 
 pub fn is_token_an_number(token: &String) -> bool{

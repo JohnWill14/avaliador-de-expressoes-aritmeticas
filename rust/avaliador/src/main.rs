@@ -7,7 +7,6 @@ use tokens::generate_tokens;
 use convert::convert_infix_expression_to_postfix;
 use solve::solve_postfix_expression;
 
-use std::env;
 use std::io::prelude::*;
 
 fn main() {
