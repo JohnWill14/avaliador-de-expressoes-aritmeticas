@@ -1,3 +1,7 @@
+
+mod tokens;
+
+use tokens::generateTokens;
 fn main() {
-    println!("Hello, world!");
+    generateTokens();
 }
