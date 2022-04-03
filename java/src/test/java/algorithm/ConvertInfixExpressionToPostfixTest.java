@@ -1,7 +1,10 @@
 package algorithm;
 
 import br.com.paradigma.algorithm.ArithmeticExpressionEvaluator;
+import br.com.paradigma.algorithm.ConvertToken;
+import br.com.paradigma.algorithm.Tokens;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,15 +12,24 @@ import java.util.List;
 
 
 @DisplayName("Test method parser from Shunting-yard algorithm")
-class convertInfixExpressionToPostfixTest {
+class ConvertInfixExpressionToPostfixTest {
+    private Tokens tokensUtil;
+    private ConvertToken convertToken;
+    
+    @BeforeEach
+    public void init(){
+        tokensUtil = new Tokens();
+        convertToken = new ConvertToken();
+    }
+    
     @Test
     @DisplayName("Test function parser example")
     void testConvertInfixExpressionToPostfixExample(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
-        List<String> tokens = algorithm.generateTokens("5 + 2 / (3 - 8) * 5 - 2");
+        List<String> tokens = tokensUtil.generateTokens("5 + 2 / (3 - 8) * 5 - 2");
 
-        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
+        List<String> parser = convertToken.convertInfixExpressionToPostfix(tokens);
 
 
 
@@ -30,9 +42,9 @@ class convertInfixExpressionToPostfixTest {
     void testConvertInfixExpressionToPostfix1(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
-        List<String> tokens = algorithm.generateTokens("31 * 4 + 10");
+        List<String> tokens = tokensUtil.generateTokens("31 * 4 + 10");
 
-        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
+        List<String> parser = convertToken.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("31", "4", "*", "10", "+"));
@@ -43,9 +55,9 @@ class convertInfixExpressionToPostfixTest {
     void testConvertInfixExpressionToPostfix2(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
-        List<String> tokens = algorithm.generateTokens("31 * (4 + 10)");
+        List<String> tokens = tokensUtil.generateTokens("31 * (4 + 10)");
 
-        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
+        List<String> parser = convertToken.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("31", "4", "10", "+", "*"));
@@ -56,9 +68,9 @@ class convertInfixExpressionToPostfixTest {
     void testConvertInfixExpressionToPostfix3(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
-        List<String> tokens = algorithm.generateTokens("1 + 3");
+        List<String> tokens = tokensUtil.generateTokens("1 + 3");
 
-        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
+        List<String> parser = convertToken.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("1", "3", "+"));
@@ -69,9 +81,9 @@ class convertInfixExpressionToPostfixTest {
     void testConvertInfixExpressionToPostfix4(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
-        List<String> tokens = algorithm.generateTokens("1 + 2 * 3");
+        List<String> tokens = tokensUtil.generateTokens("1 + 2 * 3");
 
-        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
+        List<String> parser = convertToken.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("1", "2", "3", "*", "+"));
@@ -82,9 +94,9 @@ class convertInfixExpressionToPostfixTest {
     void testConvertInfixExpressionToPostfix5(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
-        List<String> tokens = algorithm.generateTokens("4 / 2 + 7");
+        List<String> tokens = tokensUtil.generateTokens("4 / 2 + 7");
 
-        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
+        List<String> parser = convertToken.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("4", "2", "/", "7", "+"));
@@ -95,9 +107,9 @@ class convertInfixExpressionToPostfixTest {
     void testConvertInfixExpressionToPostfix6(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
-        List<String> tokens = algorithm.generateTokens("1 + 2 + 3 * 4");
+        List<String> tokens = tokensUtil.generateTokens("1 + 2 + 3 * 4");
 
-        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
+        List<String> parser = convertToken.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("1", "2", "+", "3", "4", "*", "+"));
@@ -109,9 +121,9 @@ class convertInfixExpressionToPostfixTest {
     void testConvertInfixExpressionToPostfix7(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
-        List<String> tokens = algorithm.generateTokens("(1 + 2 + 3) * 4");
+        List<String> tokens = tokensUtil.generateTokens("(1 + 2 + 3) * 4");
 
-        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
+        List<String> parser = convertToken.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("1", "2", "+", "3", "+", "4", "*"));
@@ -123,9 +135,9 @@ class convertInfixExpressionToPostfixTest {
     void testConvertInfixExpressionToPostfix8(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
-        List<String> tokens = algorithm.generateTokens("(10 / 3 + 23) * (1 - 4)");
+        List<String> tokens = tokensUtil.generateTokens("(10 / 3 + 23) * (1 - 4)");
 
-        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
+        List<String> parser = convertToken.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("10", "3", "/", "23", "+", "1", "4", "-", "*"));
@@ -136,9 +148,9 @@ class convertInfixExpressionToPostfixTest {
     void testConvertInfixExpressionToPostfix9(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
-        List<String> tokens = algorithm.generateTokens("((1 + 3) * 8 + 1) / 3");
+        List<String> tokens = tokensUtil.generateTokens("((1 + 3) * 8 + 1) / 3");
 
-        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
+        List<String> parser = convertToken.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("1", "3", "+", "8", "*", "1", "+", "3", "/"));
@@ -150,9 +162,9 @@ class convertInfixExpressionToPostfixTest {
     void testConvertInfixExpressionToPostfix10(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
-        List<String> tokens = algorithm.generateTokens("10 * 20 + 3 * 7 + 2 * 3 + 10 / 3 * 4");
+        List<String> tokens = tokensUtil.generateTokens("10 * 20 + 3 * 7 + 2 * 3 + 10 / 3 * 4");
 
-        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
+        List<String> parser = convertToken.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("10", "20", "*", "3", "7", "*", "+", "2", "3", "*", "+", "10", "3", "/", "4", "*", "+"));
@@ -163,9 +175,9 @@ class convertInfixExpressionToPostfixTest {
     void testConvertInfixExpressionToPostfix11(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
-        List<String> tokens = algorithm.generateTokens("1 + -2 * 3");
+        List<String> tokens = tokensUtil.generateTokens("1 + -2 * 3");
 
-        List<String> parser = algorithm.convertInfixExpressionToPostfix(tokens);
+        List<String> parser = convertToken.convertInfixExpressionToPostfix(tokens);
 
         Assertions.assertThat(parser)
                 .isEqualTo(List.of("1", "-2", "3", "*", "+"));
