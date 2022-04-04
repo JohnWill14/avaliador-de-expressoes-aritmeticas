@@ -32,5 +32,6 @@
   ```
   
   Para sair do programa basta digitar ``exit`` no input do programa.
-    
-    
+    <p align='center'>
+      <img align='center' src="./terminal.gif" />    
+   </p>
