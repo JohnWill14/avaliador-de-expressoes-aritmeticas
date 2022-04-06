@@ -1,5 +1,7 @@
 # Avaliador de expressões aritmeticas
 
+  O programa lê expressões aritméticas da entrada padrão e realiza o calculo do resultado descrevendo passo a passo a resolução.
+
 
 ## Como executar
 
