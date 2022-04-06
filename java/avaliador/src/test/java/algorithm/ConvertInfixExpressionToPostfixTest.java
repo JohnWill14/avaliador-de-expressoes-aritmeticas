@@ -23,7 +23,6 @@ class ConvertInfixExpressionToPostfixTest {
     }
     
     @Test
-    @DisplayName("Test function parser example")
     void testConvertInfixExpressionToPostfixExample(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
@@ -38,7 +37,6 @@ class ConvertInfixExpressionToPostfixTest {
     }
 
     @Test
-    @DisplayName("Test function ConvertInfixExpressionToPostfix 1")
     void testConvertInfixExpressionToPostfix1(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
@@ -51,7 +49,6 @@ class ConvertInfixExpressionToPostfixTest {
     }
 
     @Test
-    @DisplayName("Test function parser 2")
     void testConvertInfixExpressionToPostfix2(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
@@ -64,7 +61,6 @@ class ConvertInfixExpressionToPostfixTest {
     }
 
     @Test
-    @DisplayName("Test function parser 3")
     void testConvertInfixExpressionToPostfix3(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
@@ -77,7 +73,6 @@ class ConvertInfixExpressionToPostfixTest {
     }
 
     @Test
-    @DisplayName("Test function parser 4")
     void testConvertInfixExpressionToPostfix4(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
@@ -90,7 +85,6 @@ class ConvertInfixExpressionToPostfixTest {
     }
 
     @Test
-    @DisplayName("Test function parser 5")
     void testConvertInfixExpressionToPostfix5(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
@@ -103,7 +97,6 @@ class ConvertInfixExpressionToPostfixTest {
     }
 
     @Test
-    @DisplayName("Test function parser 6")
     void testConvertInfixExpressionToPostfix6(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
@@ -117,7 +110,6 @@ class ConvertInfixExpressionToPostfixTest {
 
 
     @Test
-    @DisplayName("Test function parser 7")
     void testConvertInfixExpressionToPostfix7(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
@@ -131,7 +123,6 @@ class ConvertInfixExpressionToPostfixTest {
 
 
     @Test
-    @DisplayName("Test function parser 8")
     void testConvertInfixExpressionToPostfix8(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
@@ -144,7 +135,6 @@ class ConvertInfixExpressionToPostfixTest {
     }
 
     @Test
-    @DisplayName("Test function parser 9")
     void testConvertInfixExpressionToPostfix9(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
@@ -158,7 +148,6 @@ class ConvertInfixExpressionToPostfixTest {
 
 
     @Test
-    @DisplayName("Test function parser 10")
     void testConvertInfixExpressionToPostfix10(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
@@ -171,7 +160,6 @@ class ConvertInfixExpressionToPostfixTest {
     }
 
     @Test
-    @DisplayName("Test function parser 11")
     void testConvertInfixExpressionToPostfix11(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 

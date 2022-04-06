@@ -19,7 +19,6 @@ public class GenerateTokensShutingYardTest {
     }
 
     @Test
-    @DisplayName("Test function tokens")
     void testtokens(){
         Tokens tokenUtil = new Tokens();
 
