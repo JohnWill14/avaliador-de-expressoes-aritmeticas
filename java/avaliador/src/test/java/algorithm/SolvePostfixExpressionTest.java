@@ -22,86 +22,132 @@ public class SolvePostfixExpressionTest {
     }
 
     @Test
-    @DisplayName("Test function Lexier")
     void testSolvePostfixExpression(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
-        List<String> tokens = tokensUtil.generateTokens("31 * (4 + 10)");
-        List<String> parser = convertToken.convertInfixExpressionToPostfix(tokens);
-        double value = algorithm.solvePostfixExpression(parser);
+        List<String> tokens = tokens = tokensUtil.generateTokens("31 * (4 + 10)");
+        List<String> parser = parser = parser = convertToken.convertInfixExpressionToPostfix(tokens);
+        int value = algorithm.solvePostfixExpression(parser);
 
         Assertions.assertThat(value)
-                .isEqualTo(434d);
+                .isEqualTo(434);
 
     }
 
     @Test
-    @DisplayName("Test function Lexier 1")
     void testSolvePostfixExpression1(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
-        List<String> tokens = tokensUtil.generateTokens("5 + 2 / (3 - 8) * 5 - 2");
-        List<String> parser = convertToken.convertInfixExpressionToPostfix(tokens);
-        double value = algorithm.solvePostfixExpression(parser);
+        List<String> tokens = tokens = tokensUtil.generateTokens("5 + 2 / (3 - 8) * 5 - 2");
+        List<String> parser = parser = parser = convertToken.convertInfixExpressionToPostfix(tokens);
+        int value = algorithm.solvePostfixExpression(parser);
 
         Assertions.assertThat(value)
-                .isEqualTo(3d);
+                .isEqualTo(3);
 
     }
 
     @Test
-    @DisplayName("Test function Lexier 2")
     void testSolvePostfixExpression2(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
-        List<String> tokens = tokensUtil.generateTokens("1 + 2 * 3");
-        List<String> parser = convertToken.convertInfixExpressionToPostfix(tokens);
-        double value = algorithm.solvePostfixExpression(parser);
+        List<String> tokens = tokens = tokensUtil.generateTokens("1 + 2 * 3");
+        List<String> parser = parser = parser = convertToken.convertInfixExpressionToPostfix(tokens);
+        int value = algorithm.solvePostfixExpression(parser);
 
         Assertions.assertThat(value)
-                .isEqualTo(7d);
+                .isEqualTo(7);
 
     }
 
     @Test
-    @DisplayName("Test function Lexier 3")
     void testSolvePostfixExpression3(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
-        List<String> tokens = tokensUtil.generateTokens("4 / 2 + 7");
-        List<String> parser = convertToken.convertInfixExpressionToPostfix(tokens);
-        double value = algorithm.solvePostfixExpression(parser);
+        List<String> tokens = tokens = tokensUtil.generateTokens("4 / 2 + 7");
+        List<String> parser = parser = parser = convertToken.convertInfixExpressionToPostfix(tokens);
+        int value = algorithm.solvePostfixExpression(parser);
 
         Assertions.assertThat(value)
-                .isEqualTo(9d);
+                .isEqualTo(9);
 
     }
 
     @Test
-    @DisplayName("Test function Lexier 4")
     void testSolvePostfixExpression4(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
-        List<String> tokens = tokensUtil.generateTokens("1 + 2 + 3 * 4");
-        List<String> parser = convertToken.convertInfixExpressionToPostfix(tokens);
-        double value = algorithm.solvePostfixExpression(parser);
+        List<String> tokens = tokens = tokensUtil.generateTokens("1 + 2 + 3 * 4");
+        List<String> parser = parser = parser = convertToken.convertInfixExpressionToPostfix(tokens);
+        int value = algorithm.solvePostfixExpression(parser);
 
         Assertions.assertThat(value)
-                .isEqualTo(15d);
+                .isEqualTo(15);
 
     }
 
     @Test
-    @DisplayName("Test function Lexier 5")
     void testSolvePostfixExpression5(){
         ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
 
-        List<String> tokens = tokensUtil.generateTokens("(1 + 2 + 3) * 4");
-        List<String> parser = convertToken.convertInfixExpressionToPostfix(tokens);
-        double value = algorithm.solvePostfixExpression(parser);
+        List<String> tokens = tokens = tokensUtil.generateTokens("(1 + 2 + 3) * 4");
+        List<String> parser = parser = parser = convertToken.convertInfixExpressionToPostfix(tokens);
+        int value = algorithm.solvePostfixExpression(parser);
 
         Assertions.assertThat(value)
-                .isEqualTo(24d);
+                .isEqualTo(24);
+
+    }
+
+    @Test
+    void testConvertExpressPostfixInInfix(){
+        ArithmeticExpressionEvaluator algorithm = new ArithmeticExpressionEvaluator();
+        List<String> tokens = null;
+        List<String> parser = null;
+        String result = null;
+        String express = null;
+
+        express = "(1 + 2 + 3) * 4";
+        tokens = tokensUtil.generateTokens(express);
+        parser = parser = convertToken.convertInfixExpressionToPostfix(tokens);
+        result = algorithm.convertExpressPostfixInInfix(parser);
+
+        Assertions.assertThat(result).isEqualTo(express);
+
+        express = "31 * (4 + 10)";
+        tokens = tokensUtil.generateTokens(express);
+        parser = parser = convertToken.convertInfixExpressionToPostfix(tokens);
+        result = algorithm.convertExpressPostfixInInfix(parser);
+
+        Assertions.assertThat(result).isEqualTo(express);
+
+        express = "5 + 2 / (3 - 8) * 5 - 2";
+        tokens = tokensUtil.generateTokens(express);
+        parser = parser = convertToken.convertInfixExpressionToPostfix(tokens);
+        result = algorithm.convertExpressPostfixInInfix(parser);
+
+        Assertions.assertThat(result).isEqualTo(express);
+
+        express = "1 + 2 * 3";
+        tokens = tokensUtil.generateTokens(express);
+        parser = parser = convertToken.convertInfixExpressionToPostfix(tokens);
+        result = algorithm.convertExpressPostfixInInfix(parser);
+
+        Assertions.assertThat(result).isEqualTo(express);
+
+        express = "4 / 2 + 7";
+        tokens = tokensUtil.generateTokens(express);
+        parser = parser = convertToken.convertInfixExpressionToPostfix(tokens);
+        result = algorithm.convertExpressPostfixInInfix(parser);
+
+        Assertions.assertThat(result).isEqualTo(express);
+
+        express = "(1 + 2 + 3) * 4";
+        tokens = tokensUtil.generateTokens(express);
+        parser = parser = convertToken.convertInfixExpressionToPostfix(tokens);
+        result = algorithm.convertExpressPostfixInInfix(parser);
+
+        Assertions.assertThat(result).isEqualTo(express);
 
     }
 }
