@@ -23,7 +23,7 @@ fn main() {
             .expect("can't read line from stdin");
 
 
-        if express.eq("exit"){
+        if let "exit\n" = &*express {
             break;
         }
 

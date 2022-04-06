@@ -173,32 +173,32 @@ mod tests {
 
     #[test]
     fn express_format_test(){
-        let mut express = "31 * (4 + 10)";
+        let express = "31 * (4 + 10)";
         let mut tokens = generate_tokens(express);
         let mut parser = convert_infix_expression_to_postfix(&mut tokens);
         assert_eq!(express, express_format(&mut parser));
 
-        let mut express = "5 + 2 / (3 - 8) * 5 - 2";
+        let express = "5 + 2 / (3 - 8) * 5 - 2";
         let mut tokens = generate_tokens(express);
         let mut parser = convert_infix_expression_to_postfix(&mut tokens);
         assert_eq!(express, express_format(&mut parser));
 
-        let mut express = "1 + 2 * 3";
+        let express = "1 + 2 * 3";
         let mut tokens = generate_tokens(express);
         let mut parser = convert_infix_expression_to_postfix(&mut tokens);
         assert_eq!(express, express_format(&mut parser));
 
-        let mut express = "4 / 2 + 7";
+        let express = "4 / 2 + 7";
         let mut tokens = generate_tokens(express);
         let mut parser = convert_infix_expression_to_postfix(&mut tokens);
         assert_eq!(express, express_format(&mut parser));
 
-        let mut express = "1 + 2 + 3 * 4";
+        let express = "1 + 2 + 3 * 4";
         let mut tokens = generate_tokens(express);
         let mut parser = convert_infix_expression_to_postfix(&mut tokens);
         assert_eq!(express, express_format(&mut parser));
 
-        let mut express = "(1 + 2 + 3) * 4";
+        let express = "(1 + 2 + 3) * 4";
         let mut tokens = generate_tokens(express);
         let mut parser = convert_infix_expression_to_postfix(&mut tokens);
         assert_eq!(express, express_format(&mut parser));
